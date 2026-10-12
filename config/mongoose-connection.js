@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/ecommerseusers')
+const dbgr = require('debug')('development:mongoose');
+const config = require('config');
+
+
+mongoose.connect(`${config.MONGOOSE_URL}/ecommerseusers`)
 .then(function(){
-    console.log("connected");
+    dbgr("connected");
 })
 .catch(function(err){
     console.log(err)
